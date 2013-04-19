@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #define DEFAULT_NUMBER_ARG 3
 #define KEY_LEN 2
@@ -16,8 +17,13 @@ int main(int argc,char *argv[]) {
 int securecompare(char *inputValue,char * referenceValue, int len) {
     int index=0;
     int res=0;
-    for(index=0;index<len;index++) {
+    while(index<len& res==0) {
 	res^=*(inputValue+index)^*(referenceValue+index);
+	index++;
+    }
+    while(index<len) {
+	res|res;
+	index++;
     }
     return res;
 }
