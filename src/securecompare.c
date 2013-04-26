@@ -17,12 +17,14 @@ int main(int argc,char *argv[]) {
 int securecompare(char *inputValue,char * referenceValue, int len) {
     int index=0;
     int res=0;
-    while(index<len& res==0) {
+    int dummy_res=0;
+    int dummy_cmp=0;
+    while(index<len & res==0) {
 	res^=*(inputValue+index)^*(referenceValue+index);
 	index++;
     }
-    while(index<len) {
-	res|res;
+    while(index<len & dummy_cmp==0) {
+	dummy_res^=(*inputValue+index)|*(inputValue+index);
 	index++;
     }
     return res;
